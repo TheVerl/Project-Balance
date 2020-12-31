@@ -1,19 +1,61 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/Unit.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/World.gd" type="Script" id=2]
+[ext_resource path="res://scenes/Object.tscn" type="PackedScene" id=3]
 
 [node name="World" type="Node2D"]
 script = ExtResource( 2 )
 
-[node name="Unit" parent="." instance=ExtResource( 1 )]
-position = Vector2( 487.583, 215.61 )
+[node name="Unit18" parent="." instance=ExtResource( 1 )]
+position = Vector2( 277.307, 241.835 )
 
-[node name="Unit2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 416.307, 226.835 )
+[node name="Unit19" parent="." instance=ExtResource( 1 )]
+position = Vector2( 285.164, 299.08 )
 
-[node name="Unit3" parent="." instance=ExtResource( 1 )]
-position = Vector2( 424.164, 284.08 )
+[node name="Unit21" parent="." instance=ExtResource( 1 )]
+position = Vector2( 209.583, 241.61 )
 
-[node name="Unit4" parent="." instance=ExtResource( 1 )]
-position = Vector2( 479.726, 262.754 )
+[node name="Unit22" parent="." instance=ExtResource( 1 )]
+position = Vector2( 138.307, 252.835 )
+
+[node name="Unit23" parent="." instance=ExtResource( 1 )]
+position = Vector2( 146.164, 310.08 )
+
+[node name="Unit24" parent="." instance=ExtResource( 1 )]
+position = Vector2( 201.726, 288.754 )
+
+[node name="Unit25" parent="." instance=ExtResource( 1 )]
+position = Vector2( 241.583, 335.61 )
+
+[node name="Unit26" parent="." instance=ExtResource( 1 )]
+position = Vector2( 170.307, 346.835 )
+
+[node name="Unit27" parent="." instance=ExtResource( 1 )]
+position = Vector2( 178.164, 404.08 )
+
+[node name="Unit28" parent="." instance=ExtResource( 1 )]
+position = Vector2( 233.726, 382.754 )
+
+[node name="Unit30" parent="." instance=ExtResource( 1 )]
+position = Vector2( 318.307, 344.835 )
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Unit" parent="." instance=ExtResource( 3 )]
+position = Vector2( 513.74, 281.542 )
+
+[node name="Unit2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 588.74, 279.542 )
+
+[node name="Unit3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 561.74, 332.542 )
+
+[node name="Unit4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 471.74, 310.542 )
+
+[node name="Unit5" parent="." instance=ExtResource( 3 )]
+position = Vector2( 546.74, 308.542 )
+
+[node name="Unit6" parent="." instance=ExtResource( 3 )]
+position = Vector2( 519.74, 361.542 )
