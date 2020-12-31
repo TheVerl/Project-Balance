@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-var char_Sheet = {
+var charSheet = {
 	Name = "John",
 	
 	Attr = {
@@ -15,26 +15,26 @@ var char_Sheet = {
 var DEBUG_DRAW = true
 
 export var speed = 100  # Movement speed.
-var av = Vector2.ZERO  # Avoidance vector.
+var avoidanceVector = Vector2.ZERO  # Avoidance vector.
 var avoidWeight = 0.1  # How strongly to avoid other units.
 var targetRadius = 50  # Stop when this close to target.
-var target = null setget set_target  # Set this to move.
+var target = null setget setTarget  # Set this to move.
 var selected = false setget setSelected  # Is this unit selected?
 var velocity = Vector2.ZERO
+var rand = RandomNumberGenerator.new() 
 
-func _Calc_Scores():
+func _calcScores():
 	speed = 0
-	
-var rand = RandomNumberGenerator.new()
-func _Rand_Scores():
+
+func _randScores():
 	rand.randomize()
-	char_Sheet.Attr.Str = rand.randf_range(1.0, 10.0)
+	charSheet.Attr.Str = rand.randf_range(1.0, 10.0)
 	
 func _ready():
 	# Make sure the material is unique to this unit.
 	$Sprite.material = $Sprite.material.duplicate()
-	_Rand_Scores()
-	_Calc_Scores()
+	_randScores()
+	_calcScores()
 	
 func _physics_process(delta):
 	update()
@@ -47,13 +47,12 @@ func setSelected(value):
 	else:
 		$Sprite.material.set_shader_param("aura_width", 0)
 		
-func set_target(value):
+func setTarget(value):
 	target = value
 
-	
 func _draw():
 	# Draws some debug vectors.
 	if !DEBUG_DRAW:
 		return
 	draw_circle(Vector2.ZERO, $Detect/CollisionShape2D.shape.radius,
-				Color(0.0, (char_Sheet.Attr.Str / 10), 0, 0.5))
+				Color(0.0, (charSheet.Attr.Str / 10), 0, 0.5))
