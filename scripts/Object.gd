@@ -43,9 +43,9 @@ func setSelected(value):
 	# Draw a highlight around the unit if it's selected.
 	selected = value
 	if selected:
-		$Sprite.material.set_shader_param("aura_width", 1)
+		$Sprite.material.set_shader_param("auraWidth", 1)
 	else:
-		$Sprite.material.set_shader_param("aura_width", 0)
+		$Sprite.material.set_shader_param("auraWidth", 0)
 		
 func setTarget(value):
 	target = value

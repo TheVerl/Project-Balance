@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-var char_Sheet = {
+var charSheet = {
 	Name = "John",
 	
 	Attr = {
@@ -21,20 +21,20 @@ var targetRadius = 50  # Stop when this close to target.
 var target = null setget set_target  # Set this to move.
 var selected = false setget setSelected  # Is this unit selected?
 var velocity = Vector2.ZERO
-
-func _Calc_Scores():
-	speed = char_Sheet.Attr.Dex * 50
-	
 var rand = RandomNumberGenerator.new()
-func _Rand_Scores():
+
+func _calcScores():
+	speed = charSheet.Attr.Dex * 50
+	
+func _randScores():
 	rand.randomize()
-	char_Sheet.Attr.Dex = rand.randf_range(1.0, 10.0)
+	charSheet.Attr.Dex = rand.randf_range(1.0, 10.0)
 	
 func _ready():
 	# Make sure the material is unique to this unit.
 	$Sprite.material = $Sprite.material.duplicate()
-	_Rand_Scores()
-	_Calc_Scores()
+	_randScores()
+	_calcScores()
 	
 func _physics_process(delta):
 	velocity = Vector2.ZERO
@@ -79,7 +79,7 @@ func _draw():
 	if !DEBUG_DRAW:
 		return
 	draw_circle(Vector2.ZERO, $Detect/CollisionShape2D.shape.radius,
-				Color((char_Sheet.Attr.Dex / 10), 0.0, 0, 0.5))
+				Color((charSheet.Attr.Dex / 10), 0.0, 0, 0.5))
 	draw_line(Vector2.ZERO, av.rotated(-rotation)*50, Color(1, 0, 0), 5)
 	draw_line(Vector2.ZERO, velocity.rotated(-rotation)*speed, Color(0, 1, 0), 5)
 	if target:
