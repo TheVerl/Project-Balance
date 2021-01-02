@@ -43,8 +43,8 @@ func _unhandled_input(event):
 			# Result is an array of dictionaries. Each has a "collider" key.
 			selected = space.intersect_shape(query)
 			for item in selected:
+				# You need this or it will select the objects as well and then throw a fit.
 				if "Unit" in item.collider.name:
-					print(item.collider.name)
 					item.collider.selected = true
 				else:
 					selected.erase(item)
