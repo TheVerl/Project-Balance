@@ -19,9 +19,8 @@ var avoidanceVector = Vector2.ZERO  # Avoidance vector.
 var avoidWeight = 0.1  # How strongly to avoid other units.
 var targetRadius = 50  # Stop when this close to target.
 var target = null setget setTarget  # Set this to move.
-var selected = false setget setSelected  # Is this unit selected?
-var velocity = Vector2.ZERO
-var rand = RandomNumberGenerator.new() 
+var velocity = Vector2.ZERO # The velocity.
+var rand = RandomNumberGenerator.new()  # Random number generator.
 
 func _calcScores():
 	speed = 0
@@ -38,14 +37,6 @@ func _ready():
 	
 func _physics_process(delta):
 	update()
-
-func setSelected(value):
-	# Draw a highlight around the unit if it's selected.
-	selected = value
-	if selected:
-		$Sprite.material.set_shader_param("auraWidth", 1)
-	else:
-		$Sprite.material.set_shader_param("auraWidth", 0)
 		
 func setTarget(value):
 	target = value
@@ -54,5 +45,5 @@ func _draw():
 	# Draws some debug vectors.
 	if !DEBUG_DRAW:
 		return
-	draw_circle(Vector2.ZERO, $Detect/CollisionShape2D.shape.radius,
-				Color(0.0, (charSheet.Attr.Str / 10), 0, 0.5))
+#	draw_circle(Vector2.ZERO, $Detect/CollisionShape2D.shape.radius,
+#				Color(0.0, (charSheet.Attr.Str / 10), 0, 0.5))
