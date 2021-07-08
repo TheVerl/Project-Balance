@@ -4,17 +4,26 @@ var dragging = false  # Are we currently dragging?
 var selected = []  # Array of currently selected units.
 var dragStart = Vector2.ZERO  # Location where drag began.
 var selectRect = RectangleShape2D.new()  # Collision shape for drag box.
-		
+
+func _ready():
+	pass
+	#print(selected.size())
+
+func _process(delta):
+	pass
+
 func _unhandled_input(event):
 	if event is InputEventMouseButton and event.button_index == BUTTON_RIGHT:
-		# Send the units on their way and keep the selecton.
 		if event.pressed:
 			if selected.size() > 0:
+				# Set the path to the destination for each selected unit.
 				for item in selected:
-					item.collider.target = event.position
+					var path = $Navigation2D.get_simple_path(item.collider.position, event.position)
+					item.collider.get_node("Line2D").points = path
+					item.collider.path = path
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT:
 		if event.pressed:
-			# Drag and deselected current selection
+			# Drag and deselect current selection
 				dragging = true
 				dragStart = event.position
 				for item in selected:
@@ -34,7 +43,11 @@ func _unhandled_input(event):
 			# Result is an array of dictionaries. Each has a "collider" key.
 			selected = space.intersect_shape(query)
 			for item in selected:
-				item.collider.selected = true
+				# You need this or it will select the objects as well and then throw a fit.
+				if "Unit" in item.collider.name:
+					item.collider.selected = true
+				else:
+					selected.erase(item)
 
 	if event is InputEventMouseMotion and dragging:
 		# Draw the box while dragging.

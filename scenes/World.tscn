@@ -1,19 +1,126 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/Unit.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/World.gd" type="Script" id=2]
+[ext_resource path="res://scenes/Object.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scripts/Navigation2D.gd" type="Script" id=4]
+
+[sub_resource type="NavigationPolygon" id=1]
+vertices = PoolVector2Array( 1.2543, 4.5657, 1027.57, -0.779686, 1032.27, 606.533, -0.109314, 600.876 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+outlines = [ PoolVector2Array( 1.2543, 4.5657, 1027.57, -0.779686, 1032.27, 606.533, -0.109314, 600.876 ) ]
 
 [node name="World" type="Node2D"]
 script = ExtResource( 2 )
 
-[node name="Unit" parent="." instance=ExtResource( 1 )]
-position = Vector2( 487.583, 215.61 )
+[node name="Navigation2D" type="Navigation2D" parent="."]
+modulate = Color( 0.407843, 0.866667, 0.219608, 1 )
+z_index = 1
+script = ExtResource( 4 )
 
-[node name="Unit2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 416.307, 226.835 )
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Navigation2D"]
+z_index = -1
+navpoly = SubResource( 1 )
 
-[node name="Unit3" parent="." instance=ExtResource( 1 )]
-position = Vector2( 424.164, 284.08 )
+[node name="Units" type="Node" parent="."]
 
-[node name="Unit4" parent="." instance=ExtResource( 1 )]
-position = Vector2( 479.726, 262.754 )
+[node name="Unit0" parent="Units" instance=ExtResource( 1 )]
+position = Vector2( 223.419, 528.187 )
+scale = Vector2( 1, 1 )
+
+[node name="Unit1" parent="Units" instance=ExtResource( 1 )]
+position = Vector2( 184.144, 484.892 )
+scale = Vector2( 1, 1 )
+
+[node name="Unit2" parent="Units" instance=ExtResource( 1 )]
+position = Vector2( 252.489, 441.883 )
+scale = Vector2( 1, 1 )
+
+[node name="Unit3" parent="Units" instance=ExtResource( 1 )]
+position = Vector2( 309.609, 466.211 )
+scale = Vector2( 1, 1 )
+
+[node name="Unit4" parent="Units" instance=ExtResource( 1 )]
+position = Vector2( 238.423, 479.428 )
+scale = Vector2( 1, 1 )
+
+[node name="Unit5" parent="Units" instance=ExtResource( 1 )]
+position = Vector2( 200.511, 444.037 )
+scale = Vector2( 1, 1 )
+
+[node name="Objects" type="Node" parent="."]
+
+[node name="Object0" parent="Objects" instance=ExtResource( 3 )]
+position = Vector2( 120.276, 225.279 )
+collision_layer = 2147483649
+collision_mask = 1
+
+[node name="Object14" parent="Objects" instance=ExtResource( 3 )]
+position = Vector2( 78.7968, 354.893 )
+collision_layer = 2147483649
+collision_mask = 1
+
+[node name="Object1" parent="Objects" instance=ExtResource( 3 )]
+position = Vector2( 137.248, 93.8414 )
+collision_layer = 2147483649
+collision_mask = 1
+
+[node name="Object2" parent="Objects" instance=ExtResource( 3 )]
+position = Vector2( 466.279, 83.4178 )
+collision_layer = 2147483649
+collision_mask = 1
+
+[node name="Object3" parent="Objects" instance=ExtResource( 3 )]
+position = Vector2( 442.434, 231.715 )
+collision_layer = 2147483649
+collision_mask = 1
+
+[node name="Object4" parent="Objects" instance=ExtResource( 3 )]
+position = Vector2( 280.377, 242.833 )
+collision_layer = 2147483649
+collision_mask = 1
+
+[node name="Object5" parent="Objects" instance=ExtResource( 3 )]
+position = Vector2( 298.924, 71.821 )
+collision_layer = 2147483649
+collision_mask = 1
+
+[node name="Object6" parent="Objects" instance=ExtResource( 3 )]
+position = Vector2( 512.24, 436.157 )
+collision_layer = 2147483649
+collision_mask = 1
+
+[node name="Object8" parent="Objects" instance=ExtResource( 3 )]
+position = Vector2( 743.203, 346.143 )
+collision_layer = 2147483649
+collision_mask = 1
+
+[node name="Object9" parent="Objects" instance=ExtResource( 3 )]
+position = Vector2( 685.913, 494.677 )
+collision_layer = 2147483649
+collision_mask = 1
+
+[node name="Object10" parent="Objects" instance=ExtResource( 3 )]
+position = Vector2( 848.259, 473.911 )
+collision_layer = 2147483649
+collision_mask = 1
+
+[node name="Object11" parent="Objects" instance=ExtResource( 3 )]
+position = Vector2( 801.066, 194.525 )
+collision_layer = 2147483649
+collision_mask = 1
+
+[node name="Object12" parent="Objects" instance=ExtResource( 3 )]
+position = Vector2( 906.156, 68.652 )
+collision_layer = 2147483649
+collision_mask = 1
+
+[node name="Object13" parent="Objects" instance=ExtResource( 3 )]
+position = Vector2( 655.709, 100.137 )
+collision_layer = 2147483649
+collision_mask = 1
+
+[node name="Object7" parent="Objects" instance=ExtResource( 3 )]
+position = Vector2( 589.638, 305.902 )
+collision_layer = 2147483649
+collision_mask = 1
